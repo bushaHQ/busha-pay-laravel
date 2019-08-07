@@ -3,7 +3,12 @@
     "description": "A laravel wrapper for busha pay service. Check docs here https://docs.api.pay.busha.co",
     "keywords": [
         "busha",
-        "busha-pay"
+        "busha-pay",
+        "charges",
+        "payments",
+        "bitcoin",
+        "ethereum",
+        "cryptocurrency"
     ],
     "homepage": "https://github.com/bushaHQ/busha-pay-laravel",
     "license": "MIT",
