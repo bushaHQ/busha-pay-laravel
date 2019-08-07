@@ -35,15 +35,15 @@ class BushaPay
         return $this;
     }
 
-    public function cancelCharge($charge)
+    public function cancelCharge($id)
     {
-        $this->post('/charges/'. $charge .'/cancel');
+        $this->post('/charges/'. $id .'/cancel');
         return $this;
     }
 
-    public function resolveCharge($charge)
+    public function resolveCharge($id)
     {
-        $this->post('/charges/'. $charge .'/resolve');
+        $this->post('/charges/'. $id .'/resolve');
         return $this;
     }
 }

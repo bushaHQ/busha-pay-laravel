@@ -23,10 +23,10 @@ trait InteractsWithResponse
     }
 
     /**
-     * Get the charge access code from response
+     * Get the charge code from response
      * @return string
      */
-    public function getAccessCode()
+    public function getChargeCode()
     {
         return $this->getResponse()['data']['code'];
     }
@@ -57,6 +57,15 @@ trait InteractsWithResponse
     {
        return $this->getResponse()['data']['metadata'];
     }
+    
+    /**
+     * Get the payments from the response
+     * @return array
+     */
+    public function getPaymentData()
+    {
+        return $this->getResponse()['data']['payments'];
+    }
 
     /**
      * Get the authorization url from the callback response
@@ -68,7 +77,7 @@ trait InteractsWithResponse
     }
 
     /**
-     * Fluent method to redirect to Paystack Payment Page
+     * Fluent method to redirect to Busha Payment Page
      */
     public function redirectNow()
     {

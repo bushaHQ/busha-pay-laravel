@@ -31,13 +31,37 @@ BUSHAPAY_API_VERSION=2019-06-30
 BUSHAPAY_API_URL=https://api.pay.busha.co
 ```
 
-#### To List all Charges https://docs.api.pay.busha.co/#list-charges
-``` php
+#### To list all charges https://docs.api.pay.busha.co/#list-charges
+```php
  BushaPay::listCharge()->getData();
  // To list with pagination and limit
  $page = 2;
  $limit = 20
  BushaPay::listCharge($page, $limit)->getData();
+```
+
+#### To show a charge
+```php
+ // Pass in the Charge Id or Charge Code
+ BushaPay::showCharge($charge)->getData();
+```
+
+#### To create a charge
+```php
+ $charge = BushaPay::createCharge($data); // Returns a Charge Response
+ // Interacting with the response
+ $charge->getAddresses(); // Returns addresses
+ $charge->getPricing(); // Returns pricing
+ $charge->getChargeId(); // Returns id
+ $charge->getChargeCode(); //Returns code
+ // To redirect to host payment page
+ $charge->redirectNow();
+```
+
+#### To cancel or resole a charge
+```php
+  BushaPay::cancelCharge($id);
+  BushaPay::resolveCharge($id); 
 ```
 
 ### Testing
