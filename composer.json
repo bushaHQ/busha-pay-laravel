@@ -10,14 +10,15 @@
     "type": "library",
     "authors": [
         {
-            "name": "Wisdom Ebong",
+            "name": "webong",
             "email": "wisdomanthoni@gmail.com",
             "role": "Developer"
         }
     ],
     "require": {
         "php": "^7.1",
-        "illuminate/support": "5.8.*"
+        "guzzlehttp/guzzle": "^6.3",
+        "illuminate/support": "5.8.*||6.*"
     },
     "require-dev": {
         "orchestra/testbench": "3.8.*",
