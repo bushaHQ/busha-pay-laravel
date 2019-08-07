@@ -1,0 +1,54 @@
+{
+    "name": "busha/busha-pay",
+    "description": "A laravel wrapper for busha pay service. Check docs here https://docs.api.pay.busha.co",
+    "keywords": [
+        "busha",
+        "busha-pay"
+    ],
+    "homepage": "https://github.com/busha/busha-pay",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Wisdom Ebong",
+            "email": "wisdomanthoni@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "illuminate/support": "5.8.*"
+    },
+    "require-dev": {
+        "orchestra/testbench": "3.8.*",
+        "phpunit/phpunit": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Busha\\BushaPay\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Busha\\BushaPay\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Busha\\BushaPay\\BushaPayServiceProvider"
+            ],
+            "aliases": {
+                "BushaPay": "Busha\\BushaPay\\BushaPayFacade"
+            }
+        }
+    }
+}
