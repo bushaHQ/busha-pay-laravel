@@ -2,8 +2,6 @@
 
 namespace Busha\BushaPay;
 
-use Unicodeveloper\Paystack\Exceptions\IsNullException;
-use Unicodeveloper\Paystack\Exceptions\PaymentVerificationFailedException;
 use Busha\Concerns\HandleRequest;
 
 class BushaPay
@@ -15,5 +13,31 @@ class BushaPay
         $this->setBaseUrl();
         $this->setApiKey();
         $this->setApiVersion();
+        $this->setRequestOptions();
+    }
+
+    public function showCharge($charge)
+    {
+        $this->get('/charges/'.$charge);
+    }
+
+    public function listCharge($page,$limit)
+    {
+        $this->get('/charges', compact($page,$limit));
+    }
+
+    public function createCharge($data)
+    {
+        $this->post('/charges', $data);
+    }
+
+    public function cancelCharge($charge)
+    {
+        $this.post('/charges/'. $charge .'/cancel');
+    }
+
+    public function resolveCharge($charge)
+    {
+        $this.post('/charges/'. $charge .'/resolve');
     }
 }

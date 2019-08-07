@@ -4,9 +4,40 @@ namespace Busha\Concerns;
 
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Config;
+use IsNullException;
 
 trait HandleRequest
 {
+    /**
+     * Issue Api Key from your BushaPay Dashboard
+     * @var string
+     */
+    protected $apiKey;
+
+    /**
+     * Issue Api Key from your BushaPay Dashboard
+     * @var string
+     */
+    protected $apiVersion;
+
+    /**
+     * BushaPay API base Url
+     * @var string
+     */
+    protected $baseUrl;
+
+    /**
+     * Instance of Guzzle Client
+     * @var Client
+     */
+    protected $client;
+
+    /**
+     *  Response from requests made to BushaPay
+     * @var mixed
+     */
+    protected $response;
+
     /**
      * Get Base Url from BushaPay config file
      */
@@ -28,7 +59,7 @@ trait HandleRequest
      */
     public function setApiVersion()
     {
-        $this->apiKey = Config::get('bushapay.apiVersion');
+        $this->apiVersion = Config::get('bushapay.apiVersion');
     }
 
     /**
@@ -47,5 +78,24 @@ trait HandleRequest
                 ]
             ]
         );
+    }
+
+    /**
+     * @param string $method
+     * @param string $relativeUrl
+     * @param array $body
+     * @return BushaPay
+     * @throws IsNullException
+     */
+    private function setHttpResponse($method, $relativeUrl, $body = [])
+    {
+        if (is_null($method)) {
+            throw new IsNullException("Empty method not allowed");
+        }
+        $this->response = $this->client->{strtolower($method)}(
+            $this->baseUrl . $relativeUrl,
+            ["body" => json_encode($body)]
+        );
+        return $this;
     }
 }
