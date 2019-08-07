@@ -37,13 +37,13 @@ class BushaPay
 
     public function cancelCharge($charge)
     {
-        $this.post('/charges/'. $charge .'/cancel');
+        $this->post('/charges/'. $charge .'/cancel');
         return $this;
     }
 
     public function resolveCharge($charge)
     {
-        $this.post('/charges/'. $charge .'/resolve');
+        $this->post('/charges/'. $charge .'/resolve');
         return $this;
     }
 }
