@@ -5,7 +5,7 @@
         "busha",
         "busha-pay"
     ],
-    "homepage": "https://github.com/busha/busha-pay-laravel",
+    "homepage": "https://github.com/bushaHQ/busha-pay-laravel",
     "license": "MIT",
     "type": "library",
     "authors": [
