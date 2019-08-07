@@ -23,7 +23,7 @@ class BushaPay
         return $this;
     }
 
-    public function listCharge($page,$limit)
+    public function listCharge($page = null ,$limit = null)
     {
         $this->get('/charges', compact($page,$limit));
         return $this;
