@@ -38,6 +38,11 @@ trait HandleRequest
      */
     protected $response;
 
+    private $supportedHttpMethods = [
+        "GET",
+        "POST"
+    ];
+    
     /**
      * Get Base Url from BushaPay config file
      */
@@ -97,5 +102,13 @@ trait HandleRequest
             ["body" => json_encode($body)]
         );
         return $this;
+    }
+
+    function __call($method, $args)
+    {
+        if(in_array(strtoupper($method), $this->supportedHttpMethods))
+        {
+            return $this->setHttpResponse($method, ...$args);
+        }
     }
 }
