@@ -17,15 +17,15 @@ class BushaPay
         $this->setRequestOptions();
     }
 
-    public function showCharge($charge)
+    public function listCharges($page = null ,$limit = null)
     {
-        $this->get('/charges/'.$charge);
+        $this->get('/charges', compact($page,$limit));
         return $this;
     }
 
-    public function listCharge($page = null ,$limit = null)
+    public function showCharge($charge)
     {
-        $this->get('/charges', compact($page,$limit));
+        $this->get('/charges/'.$charge);
         return $this;
     }
 

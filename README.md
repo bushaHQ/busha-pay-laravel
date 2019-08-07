@@ -15,10 +15,29 @@ You can install the package via composer:
 composer require busha/busha-pay-laravel
 ```
 
-## Usage
+##Configuration
+You can publish the configuration file via this command
 
+```bash
+php artisan vendor:publish --provider="Busha\BushaPay\BushaPayServiceProvider"
+```
+
+## Usage
+In your .env file and add your api key, api version and api url, see example below:
+
+```env
+BUSHAPAY_API_KEY=xxxxxxxxxxxxx
+BUSHAPAY_API_VERSION=2019-06-30
+BUSHAPAY_API_URL=https://api.pay.busha.co
+```
+
+#### To List all Charges https://docs.api.pay.busha.co/#list-charges
 ``` php
-// Usage description here
+ BushaPay::listCharge()->getData();
+ // To list with pagination and limit
+ $page = 2;
+ $limit = 20
+ BushaPay::listCharge($page, $limit)->getData();
 ```
 
 ### Testing

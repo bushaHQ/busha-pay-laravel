@@ -11,7 +11,7 @@ return [
      * Api Version For Busha Pay
      *
      */
-    'apiVersion' => env('BUSHAPAY_API_Version', "2019-06-30"),
+    'apiVersion' => env('BUSHAPAY_API_VERSION', "2019-06-30"),
 
     /**
      * Api Url For Busha Pay Service
