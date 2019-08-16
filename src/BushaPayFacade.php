@@ -16,6 +16,6 @@ class BushaPayFacade extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'busha-pay';
+        return 'bushapay';
     }
 }
