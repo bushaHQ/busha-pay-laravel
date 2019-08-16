@@ -4,6 +4,7 @@ namespace Busha\BushaPay;
 
 use Busha\Concerns\HandleRequest;
 use Busha\Concerns\InteractsWithResponse;
+use Illuminate\Support\Facades\Validator;
 
 class BushaPay
 {
@@ -17,25 +18,25 @@ class BushaPay
         $this->setRequestOptions();
     }
 
-    public function listCharges($page = null ,$limit = null)
+    public function listCharges($page = 1, $limit = 20)
     {
         $this->get('/charges', compact($page,$limit));
         return $this;
     }
 
-    public function showCharge($charge)
+    public function showCharge(string $codeOrId)
     {
-        $this->get('/charges/'.$charge);
+        $this->get('/charges/'.$codeOrId);
         return $this;
     }
 
-    public function createCharge($data)
+    public function createCharge(array $data)
     {
         $this->post('/charges', $data);
         return $this;
     }
 
-    public function cancelCharge($id)
+    public function cancelCharge(string $id)
     {
         $this->post('/charges/'. $id .'/cancel');
         return $this;
