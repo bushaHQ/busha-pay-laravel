@@ -6,7 +6,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Response;
 use Busha\BushaPay\BushaPayWebhookRequest as WebhookRequest;
 
-class WebhookController extends Controller
+class BushaPayWebhookController extends Controller
 {
     /**
      * Handle a Bushapay webhook call.
