@@ -64,6 +64,36 @@ BUSHAPAY_API_URL=https://api.pay.busha.co
   BushaPay::resolveCharge($id); 
 ```
 
+#### Handling Bushapay Webhooks
+Busha Pay can notify your application of a variety of events via webhooks. To handle this webhooks, define a route that points to a controller which extends this package webhook controller. This controller will handle all incoming webhook requests and dispatch them to the proper controller method:
+
+```
+Route::post(
+    'bushapay/webhook',
+    'WebhookController@handleWebhook'
+);
+```
+
+```
+  class WebhookController extends BushaPayWebhookController
+  {
+     public handleChargeCreate($data)
+     {
+       // Logic to handle charge created
+     }
+
+     public handleChargeFailed($data)
+     {
+       // Logic to handle charge failure
+     }
+  }
+```
+Once you have registered your route, be sure to configure the webhook URL in your Paystack dashboard settings.
+
+By default, this controller will automatically handle cancelling subscriptions that have too many failed charges (as defined by your paystack settings), charge success, transfer success or fail, invoice updates and subscription changes; however, as we'll soon discover, you can extend this controller to handle any webhook event you like.
+
+Make sure you protect incoming requests with Cashier's included webhook signature verification middleware.
+
 ### Testing
 
 ``` bash
@@ -84,7 +114,7 @@ If you discover any security related issues, please email wisdomanthoni@gmail.co
 
 ## Credits
 
-- [Wisdom Ebong](https://github.com/busha)
+- [Wisdom Ebong](https://github.com/webong)
 - [All Contributors](../../contributors)
 
 ## License

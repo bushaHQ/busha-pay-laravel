@@ -37,7 +37,7 @@ class BushaPayServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'bushapay');
 
         // Register the main class to use with the facade
-        $this->app->singleton('busha-pay', function () {
+        $this->app->singleton('bushapay', function () {
             return new BushaPay;
         });
     }
